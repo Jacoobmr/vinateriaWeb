@@ -1,0 +1,49 @@
+<form [formGroup]="productForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Nuevo Producto</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nombre del Producto" formControlName="name">
+            <mat-error *ngIf="productForm.controls['name'].hasError('required')">
+              El nombre del producto es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Clase" formControlName="type">
+            <mat-error *ngIf="productForm.controls['type'].hasError('required')">
+              La clase o tipo de producto es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Tamaño del Producto" formControlName="size">
+            <mat-error *ngIf="productForm.controls['size'].hasError('required')">
+              El tamaño del producto es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Cantidad del Producto" formControlName="quantity">
+            <mat-error *ngIf="productForm.controls['quantity'].hasError('required')">
+              La cantidad del producto es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button *ngIf="isNewProduct" mat-raised-button color="primary" type="submit">Enviar</button>
+      <button *ngIf="!isNewProduct" mat-raised-button color="primary" type="submit">Actualizar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
